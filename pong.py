@@ -12,7 +12,7 @@ rot = (255,0,0)
 global frames
 frames = 20
 
-wgröse = 70
+wgröse = 80
 hgröse = 40
 
 gröse = 20
@@ -89,7 +89,7 @@ class Ball():
                 self.vector = directions[1]
 
         elif self.x not in range(2,wgröse-2):
-            if (self.x+self.vector[0], self.y+self.vector[1]) in p1.body or (self.x+self.vector[0], self.y+self.vector[1]) in p2.body:
+            if (self.x-1, self.y) in p1.body or (self.x+1, self.y) in p2.body:
                 splayer.play()
                 if self.vector == directions[3]:
                     self.vector = directions[2]
@@ -160,7 +160,6 @@ oldtime = time.time()
 
 while True:
     while p1.score < 10 and p2.score < 10:
-        print(frames)
         clock.tick(frames)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
